@@ -1,0 +1,57 @@
+<script type="text/javascript">
+    RED.nodes.registerType('array-join',{
+        category: 'Primitives',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            source_object:{value:""},
+            source_property:{value:""},
+            target_object:{value:""},
+            target_property:{value:""},
+            join_with: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"array-join";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="array-join">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-join_with"><i class="icon-tag"></i> Join Character</label>
+        <input type="text" id="node-input-join_with" placeholder="Space">
+    </div>
+    <fieldset>
+        <legend id="strsplInput">Input Source</legend>
+        <div class="form-row">
+            <label for="node-input-source_object"><i class="icon-tag"></i> Context</label>
+            <select id="node-input-source_object"><option value="msg">msg</option><option value="context">context</option><option value="context.global">context.global</option></select>
+        </div>
+        <div class="form-row">
+            <label for="node-input-source_property"><i class="icon-tag"></i> Property</label>
+            <input type="text" id="node-input-source_property" placeholder="payload">
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend id="strsplOutput">Output Target</legend>
+        <div class="form-row">
+            <label for="node-input-target_object"><i class="icon-tag"></i> Context</label>
+            <select id="node-input-target_object"><option value="msg">msg</option><option value="context">context</option><option value="context.global">context.global</option></select>
+        </div>
+        <div class="form-row">
+            <label for="node-input-target_property"><i class="icon-tag"></i> Property</label>
+            <input type="text" id="node-input-target_property" placeholder="payload">
+        </div>
+    </fieldset>
+</script>
+
+<script type="text/x-red" data-help-name="array-join">
+    <p>A simple node that joins a supplied array using a given character</p>
+</script>

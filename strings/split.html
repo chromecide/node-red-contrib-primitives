@@ -1,0 +1,104 @@
+<script type="text/javascript">
+    (function() {
+        function strSplit_onEditPrepare(){
+            $("#string-split-character-row").hide();
+
+            $("#string-split-character-selector").change(function(){
+                if( $("#string-split-character-selector").val() === 'As Defined...') {
+                    $("#node-input-split_on").val("");
+                    $("#string-split-character-row").show();
+                }else{
+                    $("#string-split-character-row").hide();
+                    $("#node-input-split_on").val($("#string-split-character-selector").val());
+                }
+            });
+
+            if(this.split_on){
+                $("#node-input-split_on").val(this.split_on);
+                switch(this.split_on){
+                    case " ":
+                    case "\n":
+                    case "\\n":
+                    case "\r\n":
+                    case "\\r\\n":
+                    case "\t":
+                    case "\\t":
+                        $("#string-split-character-selector").val(this.split_on).change();
+                        break;
+                    default:
+                        $("#string-split-character-selector").val("As Defined...").change();
+                        break;
+
+                }
+                
+            }
+        }
+
+        RED.nodes.registerType('string-split',{
+            category: 'Primitives',
+            color: '#a6bbcf',
+            defaults: {
+                name: {value:""},
+                source_object:{value:""},
+                source_property:{value:""},
+                target_object:{value:""},
+                target_property:{value:""},
+                split_on: {value:""}
+            },
+            inputs:1,
+            outputs:1,
+            icon: "file.png",
+            label: function() {
+                return this.name||"string-split";
+            },
+            oneditprepare: strSplit_onEditPrepare
+        });
+    })();
+</script>
+
+<script type="text/x-red" data-template-name="string-split">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row" id="string-split-type-row">
+        <label for="node-input-split_on"><i class="icon-tag"></i> Split Character</label>
+        <select id="string-split-character-selector">
+            <option value=" ">Space [ ]</option>
+            <option value="\n">Line Feed [\n]</option>
+            <option value="\r\n">Carriage Return Line Feed [\r\n]</option>
+            <option value="\t">Tab [\t]</option>
+            <option>As Defined...</option>
+        </select>
+    </div>
+    <div class="form-row" id="string-split-character-row">
+        <label for="node-input-split_on"><i class="icon-tag"></i> Split Character</label>
+        <input type="text" id="node-input-split_on" placeholder="">
+    </div>
+    <fieldset>
+        <legend id="strsplInput">Input Source</legend>
+        <div class="form-row">
+            <label for="node-input-source_object"><i class="icon-tag"></i> Context</label>
+            <select id="node-input-source_object"><option value="msg">msg</option><option value="context">context</option><option value="context.global">context.global</option></select>
+        </div>
+        <div class="form-row">
+            <label for="node-input-source_property"><i class="icon-tag"></i> Property</label>
+            <input type="text" id="node-input-source_property" placeholder="payload">
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend id="strsplOutput">Output Target</legend>
+        <div class="form-row">
+            <label for="node-input-target_object"><i class="icon-tag"></i> Context</label>
+            <select id="node-input-target_object"><option value="msg">msg</option><option value="context">context</option><option value="context.global">context.global</option></select>
+        </div>
+        <div class="form-row">
+            <label for="node-input-target_property"><i class="icon-tag"></i> Property</label>
+            <input type="text" id="node-input-target_property" placeholder="payload">
+        </div>
+    </fieldset>
+</script>
+
+<script type="text/x-red" data-help-name="string-split">
+    <p>A simple node that splits a supplied string using a given character</p>
+</script>
