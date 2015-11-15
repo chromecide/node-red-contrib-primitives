@@ -1,0 +1,48 @@
+<script type="text/javascript">
+    (function() {
+        RED.nodes.registerType('number-dec',{
+            category: 'Primitives',
+            color: '#FFF0F0',
+            defaults: {
+                name: {value:""},
+                source_object:{value:""},
+                source_property:{value:""},
+                target_object:{value:""},
+                target_property:{value:""},
+                decrement_by: {value:1}
+            },
+            inputs:1,
+            outputs:1,
+            icon: "function.png",
+            label: function() {
+                return this.name||"decrement";
+            }
+        });
+    })();
+</script>
+
+<script type="text/x-red" data-template-name="number-dec">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row" id="number-dec-character-row">
+        <label for="node-input-decrement_by"><i class="icon-tag"></i> Increment By</label>
+        <input type="text" id="node-input-decrement_by" placeholder="1">
+    </div>
+    <fieldset>
+        <legend id="numberDecrementInput">Target Property</legend>
+        <div class="form-row">
+            <label for="node-input-source_object"><i class="icon-tag"></i> Context</label>
+            <select id="node-input-source_object"><option value="msg">msg</option><option value="context">context</option><option value="context.global">context.global</option></select>
+        </div>
+        <div class="form-row">
+            <label for="node-input-source_property"><i class="icon-tag"></i> Property</label>
+            <input type="text" id="node-input-source_property" placeholder="payload">
+        </div>
+    </fieldset>
+</script>
+
+<script type="text/x-red" data-help-name="number-dec">
+    <p>A simple node that decrements a msg property by the supplied value</p>
+</script>

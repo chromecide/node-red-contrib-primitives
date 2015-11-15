@@ -7,8 +7,10 @@
     "keywords": [ "node-red", "Primitives", "Strings", "Arrays", "Numbers", "Booleans" ],
     "node-red"     : {
         "nodes": {
-            "array-increment": "arrays/increment.js",
+            "array-iterate": "arrays/iterate.js",
             "array-join": "arrays/join.js",
+            "number-dec": "numbers/decrement.js",
+            "number-inc": "numbers/increment.js",
             "string-split": "strings/split.js"
         }
     }
