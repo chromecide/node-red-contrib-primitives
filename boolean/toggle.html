@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    (function() {
+        RED.nodes.registerType('bool-toggle',{
+            category: 'Primitives',
+            color: '#FFF0F0',
+            defaults: {
+                name: {value:""},
+                source_object:{value:""},
+                source_property:{value:""}
+            },
+            inputs:1,
+            outputs:1,
+            icon: "function.png",
+            label: function() {
+                return this.name||"toggle";
+            }
+        });
+    })();
+</script>
+
+<script type="text/x-red" data-template-name="bool-toggle">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <fieldset>
+        <legend id="numberDecrementInput">Target Property</legend>
+        <div class="form-row">
+            <label for="node-input-source_object"><i class="icon-tag"></i> Context</label>
+            <select id="node-input-source_object"><option value="msg">msg</option><option value="context">context</option><option value="context.global">context.global</option></select>
+        </div>
+        <div class="form-row">
+            <label for="node-input-source_property"><i class="icon-tag"></i> Property</label>
+            <input type="text" id="node-input-source_property" placeholder="payload">
+        </div>
+    </fieldset>
+</script>
+
+<script type="text/x-red" data-help-name="bool-toggle">
+    <p>A simple node that toggles a boolean value</p>
+</script>
