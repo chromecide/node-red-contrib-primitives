@@ -4,11 +4,10 @@
     "description"  : "Simple node-red nodes for manipulating primitive values.",
     "author"       :"Justin Pradier <chromecide@gmail.com> (https://chromecide.com)",
     "license"      :"MIT",
-    "repository" :
-      {
+    "repository"   :{
         "type" : "git",
         "url" : "https://github.com/chromecide/node-red-contrib-primitives.git"
-      }
+    },
     "dependencies": {
     },
     "keywords": [ "node-red", "Primitives", "Strings", "Arrays", "Numbers", "Booleans" ],
