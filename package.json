@@ -1,6 +1,6 @@
 {
     "name"         : "node-red-contrib-primitives",
-    "version"      : "0.1.0",
+    "version"      : "0.2.0",
     "description"  : "Simple node-red nodes for manipulating primitive values.",
     "license"      :"MIT",
     "author"       : "Justin Pradier <chromecide@gmail.com> (https://chromecide.com)",
