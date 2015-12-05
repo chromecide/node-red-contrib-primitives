@@ -57,8 +57,6 @@ module.exports = function(RED) {
             }
 
             targetVal = propVal.join(node.join_with);
-            console.log(msg);
-            //msg.payload = msg.payload.toLowerCase();
             node.send(msg);
         });
     }

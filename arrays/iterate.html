@@ -3,7 +3,9 @@
         category: 'Primitives',
         color: '#FFF0F0',
         defaults: {
-            name: {value:""}
+            name: {value:""},
+            source_object:{value:""},
+            source_property:{value:""}
         },
         inputs:1,
         outputs:2,
@@ -19,6 +21,21 @@
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
+    <div class="form-row">
+        <label for="node-input-join_with"><i class="icon-tag"></i> Join Character</label>
+        <input type="text" id="node-input-join_with" placeholder="Space">
+    </div>
+    <fieldset>
+        <legend id="strsplInput">Input Source</legend>
+        <div class="form-row">
+            <label for="node-input-source_object"><i class="icon-tag"></i> Context</label>
+            <select id="node-input-source_object"><option value="msg">msg</option><option value="context">context</option><option value="context.global">context.global</option></select>
+        </div>
+        <div class="form-row">
+            <label for="node-input-source_property"><i class="icon-tag"></i> Property</label>
+            <input type="text" id="node-input-source_property" placeholder="payload">
+        </div>
+    </fieldset>
 </script>
 
 <script type="text/x-red" data-help-name="array-iterate">
